@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Education {
     
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.AUTO )
     private Long id;
     private String centro;
     private String text;

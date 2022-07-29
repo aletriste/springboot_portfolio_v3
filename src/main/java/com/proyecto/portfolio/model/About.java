@@ -12,7 +12,7 @@ import lombok.Setter;
 @Entity
 public class About {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO )
     private Long id;
     private String name;
     private Long age;

@@ -11,6 +11,7 @@ import com.proyecto.portfolio.service.IPortfolioService;
 import com.proyecto.portfolio.service.ISkillService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,20 +35,24 @@ public class Controller {
         return skillServ.getSkill();
     }
     
+    
     @PostMapping("/skill/add")
     public void addSkill(@RequestBody Skill skill){
         skillServ.addSkill(skill);
     }
+    
     
     @DeleteMapping("/skill/delete/{id}")
     public void deleteSkill(@PathVariable Long id){
         skillServ.deleteSkill(id);
     }
     
+    
     @PutMapping("/skill/edit")
     public void editSkill(@RequestBody Skill skill){
         skillServ.editSkill(skill);
     }
+    
     
     @GetMapping("/skill/find/{id}")
     @ResponseBody
