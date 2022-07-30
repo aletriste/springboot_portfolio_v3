@@ -16,6 +16,7 @@ public class Education {
     @GeneratedValue (strategy = GenerationType.AUTO )
     private Long id;
     private String centro;
+    private String titulo;
     private String text;
     private String linkUrl;
     private String imageUrl;
@@ -23,9 +24,10 @@ public class Education {
     public Education() {
     }
 
-    public Education(Long id, String centro, String text, String linkUrl, String imageUrl) {
+    public Education(Long id, String centro, String titulo, String text, String linkUrl, String imageUrl) {
         this.id = id;
         this.centro = centro;
+        this.titulo = titulo;
         this.text = text;
         this.linkUrl = linkUrl;
         this.imageUrl = imageUrl;

@@ -3,10 +3,12 @@ package com.proyecto.portfolio.controller;
 
 import com.proyecto.portfolio.model.About;
 import com.proyecto.portfolio.model.Education;
+import com.proyecto.portfolio.model.Expe;
 import com.proyecto.portfolio.model.Portfolio;
 import com.proyecto.portfolio.model.Skill;
 import com.proyecto.portfolio.service.IAboutService;
 import com.proyecto.portfolio.service.IEducationService;
+import com.proyecto.portfolio.service.IExpeService;
 import com.proyecto.portfolio.service.IPortfolioService;
 import com.proyecto.portfolio.service.ISkillService;
 import java.util.List;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -58,6 +61,18 @@ public class Controller {
     @ResponseBody
     public Skill findSkill(@PathVariable Long id){
         return skillServ.findSkill(id);
+    }
+    @PutMapping("/skill/edit/{id}")
+    public Skill editPersona(@PathVariable Long id,
+                               @RequestParam("name") String newName,
+                               @RequestParam("porc") Long newPorc)
+                               {
+        Skill skill = skillServ.findSkill(id);
+        
+        skill.setName(newName) ;
+        skill.setPorc(newPorc);         
+        skillServ.editSkill(skill); ;
+        return skill;
     }
     
     @Autowired
@@ -143,5 +158,36 @@ public class Controller {
     @ResponseBody
     public About findAbout(@PathVariable Long id){
         return aboutServ.findAbout(id);
+    }
+    
+    @Autowired
+    public IExpeService expeServ;
+    
+    
+    @GetMapping("/expe/list")
+    @ResponseBody
+    public List<Expe> getExpe(){
+        return expeServ.getExpe();
+    }
+    
+    @PostMapping("/expe/add")
+    public void addExpe(@RequestBody Expe expe){
+        expeServ.addExpe(expe);
+    }
+    
+    @DeleteMapping("/expe/delete/{id}")
+    public void deleteExpe(@PathVariable Long id){
+        expeServ.deleteExpe(id);
+    }
+    
+    @GetMapping("/expe/find/{id}")
+    @ResponseBody
+    public Expe findExpe(@PathVariable Long id){
+        return expeServ.findExpe(id);
+    }
+    
+    @PutMapping("/expe/edit/")
+    public void editExpe(@RequestBody Expe expe){
+        expeServ.editExpe(expe);
     }
 }
