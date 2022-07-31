@@ -12,7 +12,7 @@ import lombok.Setter;
 @Entity
 public class Portfolio {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
     private String titulo;
     private String subtitulo; 
