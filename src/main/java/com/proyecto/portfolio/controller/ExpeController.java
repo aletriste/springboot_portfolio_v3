@@ -46,7 +46,7 @@ public class ExpeController {
         return expeServ.findExpe(id);
     }
     
-    @PutMapping("/expe/edit/")
+    @PutMapping("/expe/edit")
     public void editExpe(@RequestBody Expe expe){
         expeServ.editExpe(expe);
     }
